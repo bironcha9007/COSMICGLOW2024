@@ -1,0 +1,1697 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CARRITO DE COMPRAS</title>
+
+  <!--
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./assets/images/logo/logoc.svg" type="image/x-icon">
+
+  <!--
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style-prefix.css">
+  <link rel="stylesheet" href="./assets/css/slide.css">
+  <link rel="stylesheet" href="./assets/css/stylecart.css">
+
+  <!--
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://sdk.mercadopago.com/js/v2"></script>
+</head>
+
+<body>
+
+
+  <div class="overlay" data-overlay></div>
+
+  <!--
+    - MODAL
+  -->
+
+  <div class="modal" data-modal>
+
+    <div class="modal-close-overlay" data-modal-overlay></div>
+
+    <div class="modal-content">
+
+      <button class="modal-close-btn" data-modal-close>
+        <ion-icon name="close-outline"></ion-icon>
+      </button>
+
+      <div class="newsletter-img">
+        <img src="./assets/images/newsletter.jpg" alt="subscribe newsletter" width="400" height="400">
+      </div>
+
+      <div class="newsletter">
+
+        <form action="#">
+
+          <div class="newsletter-header">
+
+            <h3 class="newsletter-title">¿Ya haces parte de Nuestra Comunidad?</h3>
+
+            <p class="newsletter-desc">
+              Suscribete a <b>Cosmic GLow</b> Recibe de primera ofertas y promociones.
+            </p>
+
+          </div>
+
+
+
+          <button type="submit" class="btn-newsletter" onclick="openNewWindow()">Subscribete</button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+  <!--
+    - NOTIFICATION TOAST
+  -->
+
+  <div class="notification-toast" data-toast>
+
+    <button class="toast-close-btn" data-toast-close>
+      <ion-icon name="close-outline"></ion-icon>
+    </button>
+
+    <div class="toast-banner">
+      <img src="./assets/images/products/sombras54.png" alt="Sombras Beauty" width="80" height="70">
+    </div>
+
+    <div class="toast-detail">
+
+      <p class="toast-message">
+        Promoción de la Semana
+      </p>
+
+      <p class="toast-title">
+        Sombras Fusion Color
+      </p>
+      <p class="toast-title">
+        $35.000
+      </p>
+
+      <p class="toast-meta">
+        <button class="add-cart-btn" onclick="addToCart(products[19])">
+          <p>Agregar al Carrito</p>
+        </button>
+      </p>
+
+    </div>
+
+  </div>
+
+
+
+
+
+  <!--
+    - HEADER
+  -->
+
+  <header>
+
+    <div class="header-top">
+
+      <div class="container">
+
+        <ul class="header-social-container">
+
+          <li>
+            <a href="https://www.facebook.com/CosmiCGlow2020?mibextid=ZbWKwL" target="_blank" class="social-link">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="whatsapp://send?phone=+573214076057" target="_blank" class="social-link">
+              <ion-icon name="logo-whatsapp"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="https://www.instagram.com/cosmicglow.g/" target="_blank" class="social-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="mailto:cosmicglow2023@gmail.com" target="_blank" class="social-link">
+              <ion-icon name="mail"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+        <div class="header-alert-news">
+          <p>
+            <b>Ofertas del Mes</b>
+            Solo por enero del 2024 - 20% descuento
+          </p>
+
+        </div>
+
+        <div class="header-top-actions">
+
+          <a onclick="openNewWindow2()" class="banner-btn">Catálogo</a>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="header-main">
+
+      <div class="container">
+
+        <a href="index.html" class="header-logo">
+          <img src="./assets/images/logo/logoc.svg" alt="Anon's logo" width="120" height="36">
+        </a>
+
+        <div class="header-search-container">
+          <input type="search" name="search" class="search-field" placeholder="Qué producto buscas..."
+            id="search-input">
+          <button class="search-btn" data-search-button>
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+        </div>
+        <div class="header-user-actions">
+
+          <button class="action-btn">
+            <ion-icon name="person-outline" onclick="openNewWindow()"></ion-icon>
+          </button>
+
+          <button class="action-btn">
+            <ion-icon name="logo-whatsapp" onclick="openNewWindow3()"></ion-icon>
+
+          </button>
+
+          <button class="action-btn" id="cart-btn">
+            <ion-icon name="bag-handle-outline"></ion-icon>
+            <span class="count" id="cart-counter">0</span>
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <nav class="desktop-navigation-menu">
+
+      <div class="container">
+
+        <ul class="desktop-menu-category-list">
+
+          <li class="menu-category">
+            <a href="index.html" class="menu-title">Inicio</a>
+          </li>
+          <li class="menu-category">
+            <a href="#" class="menu-title">Productos</a>
+
+            <div class="dropdown-panel">
+
+              <ul class="dropdown-panel-list">
+
+                <li class="menu-title">
+                  <a href="#">Maquillaje</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">Accesorios</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">Brochas</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">Cejas</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">Corporal</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">Cuidado de Piel</a>
+                </li>
+                <li class="panel-list-item">
+                  <a href="#">Labios</a>
+                </li>
+                <li class="panel-list-item">
+                  <a href="#">Ojos</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">
+                    <img src="./assets/images/electronic-banner1.jpg" alt="headphone collection" width="250"
+                      height="119">
+                  </a>
+                </li>
+
+              </ul>
+
+              <ul class="dropdown-panel-list">
+
+                <li class="menu-title">
+                  <a href="#">Accesorios</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">Kit Piedritas + Silicona</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">papeleta Antigrasa</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">Toalla Desmaquilladora</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">Corporal</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">Cosmetiqueras</a>
+                </li>
+
+
+
+                <li class="panel-list-item">
+                  <a href="#">
+                    <img src="./assets/images/mens-banner.jpg" alt="men's fashion" width="250" height="119">
+                  </a>
+                </li>
+
+              </ul>
+
+              <ul class="dropdown-panel-list">
+
+                <li class="menu-title">
+                  <a href="#">Ojos</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">Delineadores</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">Iluminadores</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">Sombras</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">Lapices y Plumones</a>
+                </li>
+
+
+
+                <li class="panel-list-item">
+                  <a href="#">
+                    <img src="./assets/images/womens-banner.jpg" alt="women's fashion" width="250" height="119">
+                  </a>
+                </li>
+
+              </ul>
+
+              <ul class="dropdown-panel-list">
+
+                <li class="menu-title">
+                  <a href="#">Brochas</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">Kit Brochas Trendy</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">Kit Brochas Coral</a>
+                </li>
+
+
+                <li class="panel-list-item">
+                  <a href="#">
+                    <img src="./assets/images/electronics-banner-2.jpg" alt="mouse collection" width="250" height="119">
+                  </a>
+                </li>
+
+              </ul>
+
+            </div>
+          </li>
+
+
+          <li class="menu-category">
+            <a href="#" class="menu-title" onclick="navigateToCategory('Ojos')">Ojos</a>
+
+            <ul class="dropdown-list">
+
+              <li class="dropdown-item">
+                <a href="#" onclick="navigateToCategory('Ojos')">Delineadores</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#" onclick="navigateToCategory('Ojos')">Sombras</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#" onclick="navigateToCategory('Ojos')">Iluminadores</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#" onclick="navigateToCategory('Ojos')">Lapices y Plumones</a>
+              </li>
+
+            </ul>
+          </li>
+
+          <li class="menu-category">
+            <a href="#" class="menu-title" onclick="navigateToCategory('Accesorios')">Accesorios</a>
+
+            <ul class="dropdown-list">
+
+              <li class="dropdown-item">
+                <a href="#" onclick="navigateToCategory('Accesorios')">Cosmetiqueras</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#" onclick="navigateToCategory('Accesorios')">Piedritas Ojos</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#" onclick="navigateToCategory('Accesorios')">Toalla Desmaquilladora</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#" onclick="navigateToCategory('Accesorios')">Papeleta Antigrasa</a>
+              </li>
+
+            </ul>
+          </li>
+
+          <li class="menu-category">
+            <a href="#" class="menu-title" onclick="navigateToCategory('Facial')">Facial</a>
+
+            <ul class="dropdown-list">
+
+              <li class="dropdown-item">
+                <a href="#" onclick="navigateToCategory('Facial')">Bloqueadores</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#" onclick="navigateToCategory('Facial')">Kit Corporal</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#" onclick="navigateToCategory('Facial')">Mascarillas</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#" onclick="navigateToCategory('Facial')">Jabones</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#" onclick="navigateToCategory('Facial')">Cremas y Tratamientos</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#" onclick="navigateToCategory('Facial')">Tonicos</a>
+              </li>
+
+
+            </ul>
+          </li>
+
+          <li class="menu-category">
+            <a href="#" class="menu-title" onclick="navigateToCategory('Labios')">Labios</a>
+
+            <ul class="dropdown-list">
+
+              <li class="dropdown-item">
+                <a href="#" onclick="navigateToCategory('Labios')">Labiales</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#" onclick="navigateToCategory('Labios')">Balsamos</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#" onclick="navigateToCategory('Labios')">Glitters</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#" onclick="navigateToCategory('Labios')">Brillos</a>
+              </li>
+
+            </ul>
+          </li>
+
+
+          <li class="menu-category">
+            <a href="#" class="menu-title" onclick="navigateToCategory('Brochas')">Brochas</a>
+
+            <ul class="dropdown-list">
+
+              <li class="dropdown-item">
+                <a href="#" onclick="navigateToCategory('Brochas')">Brochas xUnd</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#" onclick="navigateToCategory('Brochas')">Kit Brochas</a>
+              </li>
+
+
+            </ul>
+          </li>
+
+
+
+
+
+        </ul>
+
+      </div>
+
+    </nav>
+
+    <div class="mobile-bottom-navigation">
+
+      <button class="action-btn" data-mobile-menu-open-btn>
+        <ion-icon name="menu-outline"></ion-icon>
+      </button>
+
+
+      <button class="action-btn" id="cart-btn2">
+        <ion-icon name="bag-handle-outline"></ion-icon>
+        <span class="count" id="cart-counter2">0</span>
+
+      </button>
+
+      <button class="action-btn">
+        <ion-icon name="home-outline" onclick="window.location.href = 'index.html';"></ion-icon>
+      </button>
+
+      <button class="action-btn">
+        <ion-icon name="logo-whatsapp" onclick="openNewWindow3()"></ion-icon>
+
+
+      </button>
+
+      <button class="action-btn" data-mobile-menu-open-btn>
+        <ion-icon name="grid-outline"></ion-icon>
+      </button>
+
+    </div>
+
+    <nav class="mobile-navigation-menu  has-scrollbar" data-mobile-menu>
+
+      <div class="menu-top">
+        <h2 class="menu-title">Menu</h2>
+
+        <button class="menu-close-btn" data-mobile-menu-close-btn>
+          <ion-icon name="close-outline"></ion-icon>
+        </button>
+      </div>
+
+      <ul class="mobile-menu-category-list">
+
+        <li class="menu-category">
+          <a href="./index.html" class="menu-title">Productos</a>
+        </li>
+
+        <li class="menu-category">
+
+          <button class="accordion-menu" data-accordion-btn>
+            <p class="menu-title" onclick="navigateToCategory('Accesorios')">Accesorios</p>
+
+
+          </button>
+
+        </li>
+
+        <li class="menu-category">
+
+          <button class="accordion-menu" data-accordion-btn>
+            <p class="menu-title" onclick="navigateToCategory('Brochas')">Brochas</p>
+
+          </button>
+
+
+
+        </li>
+
+        <li class="menu-category">
+
+          <button class="accordion-menu" data-accordion-btn>
+            <p class="menu-title" onclick="navigateToCategory('Ojos')">Ojos</p>
+
+
+          </button>
+
+        </li>
+
+        <li class="menu-category">
+
+          <button class="accordion-menu" data-accordion-btn>
+            <p class="menu-title" onclick="navigateToCategory('Facial')">Corporal</p>
+          </button>
+
+        </li>
+
+
+
+      </ul>
+
+      <div class="menu-bottom">
+
+        <ul class="menu-category-list">
+
+          <li class="menu-category">
+
+            <button class="accordion-menu" data-accordion-btn>
+              <p class="menu-title">Páginas Aliadas</p>
+
+              <ion-icon name="caret-back-outline" class="caret-back"></ion-icon>
+            </button>
+
+            <ul class="submenu-category-list" data-accordion>
+
+              <li class="submenu-category">
+                <a href="https://visualgraphicmd.com.co/pages/programacion/tienda-ropa/index.html"
+                  class="submenu-title">HEMP-SHOP</a>
+              </li>
+
+              <li class="submenu-category">
+                <a href="https://visualgraphicmd.com.co/pages/programacion/tiendadonas/index.html"
+                  class="submenu-title">MINI DONAS
+                  GLOW</a>
+              </li>
+
+              <li class="submenu-category">
+                <a href="https://visualgraphicmd.com.co" class="submenu-title">VISUAL GRAPHICMD</a>
+              </li>
+
+            </ul>
+
+          </li>
+
+          <li class="menu-category">
+
+          </li>
+
+        </ul>
+
+
+        <ul class="menu-social-container">
+
+          <li>
+            <a class="social-link">
+              <ion-icon name="person-outline" onclick="openNewWindow()"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="https://www.facebook.com/CosmiCGlow2020?mibextid=ZbWKwL" class="social-link">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="whatsapp://send?phone=+573214076057" class="social-link">
+              <ion-icon name="logo-whatsapp"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="https://www.instagram.com/cosmicglow.g/" class="social-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="mailto:cosmicglow2023@gmail.com" class="social-link">
+              <ion-icon name="mail"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </nav>
+
+  </header>
+
+
+
+
+  <!--
+    - MAIN
+  -->
+
+  <main>
+
+    <!--
+      - BANNER
+    -->
+
+
+
+
+    <!--
+      - CATEGORY
+    -->
+
+
+
+
+
+
+    <!--
+      - PRODUCT
+    -->
+
+    <div class="product-container">
+
+      <div class="container">
+
+
+        <!--
+          - SIDEBAR
+        -->
+
+        <div class="sidebar  has-scrollbar" data-mobile-menu>
+
+          <div class="sidebar-category">
+
+            <div class="sidebar-top">
+              <h2 class="sidebar-title">Productos</h2>
+
+              <button class="sidebar-close-btn" data-mobile-menu-close-btn>
+                <ion-icon name="close-outline"></ion-icon>
+              </button>
+            </div>
+
+            <ul class="sidebar-menu-category-list">
+
+              <li class="sidebar-menu-category">
+
+                <button class="sidebar-accordion-menu" data-accordion-btn>
+
+                  <div class="menu-title-flex">
+                    <img src="./assets/images/iconos/accesorios.png" alt="clothes" width="20" height="20"
+                      class="menu-title-img">
+
+                    <p class="menu-title" onclick="navigateToCategory('Accesorios')">ACCESORIOS</p>
+                  </div>
+
+                  <div>
+                    <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                    <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+                  </div>
+
+                </button>
+
+                <ul class="sidebar-submenu-category-list" data-accordion>
+
+                  <li class="sidebar-submenu-category">
+                    <a href="#" class="sidebar-submenu-title" onclick="navigateToProductDetail(29);">
+                      <p class="product-name">Cosmetiqueras</p>
+
+                    </a>
+                  </li>
+
+                  <li class="sidebar-submenu-category">
+                    <a href="#" class="sidebar-submenu-title" onclick="navigateToProductDetail(5);">
+                      <p class="product-name">Kit Piedritas Crystal</p>
+
+                    </a>
+                  </li>
+
+                  <li class="sidebar-submenu-category">
+                    <a href="#" class="sidebar-submenu-title" onclick="navigateToProductDetail(14);">
+                      <p class="product-name">Papeletas Forget Shine</p>
+
+                    </a>
+                  </li>
+
+                  <li class="sidebar-submenu-category">
+                    <a href="#" class="sidebar-submenu-title" onclick="navigateToProductDetail(3);">
+                      <p class="product-name">Toalla Desmaquilladora</p>
+
+                    </a>
+                  </li>
+
+                </ul>
+
+              </li>
+
+              <li class="sidebar-menu-category">
+
+                <button class="sidebar-accordion-menu" data-accordion-btn>
+
+                  <div class="menu-title-flex">
+                    <img src="./assets/images/iconos/BROCHASS.png" alt="footwear" class="menu-title-img" width="20"
+                      height="20">
+
+                    <p class="menu-title" onclick="navigateToCategory('Brochas')">BROCHAS</p>
+                  </div>
+
+                  <div>
+                    <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                    <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+                  </div>
+
+                </button>
+
+                <ul class="sidebar-submenu-category-list" data-accordion>
+
+                  <li class="sidebar-submenu-category">
+                    <a href="#" class="sidebar-submenu-title" onclick="navigateToProductDetail(1);">
+                      <p class="product-name">Kit Brochas Koral</p>
+
+                    </a>
+                  </li>
+
+                  <li class="sidebar-submenu-category">
+                    <a href="#" class="sidebar-submenu-title" onclick="navigateToProductDetail(17);">
+                      <p class="product-name">Limpiador Brochas</p>
+
+                    </a>
+                  </li>
+
+
+                </ul>
+
+              </li>
+
+              <li class="sidebar-menu-category">
+
+                <button class="sidebar-accordion-menu" data-accordion-btn>
+
+                  <div class="menu-title-flex">
+                    <img src="./assets/images/iconos/OJOS.png" alt="clothes" class="menu-title-img" width="20"
+                      height="20">
+
+                    <p class="menu-title" onclick="navigateToCategory('Ojos')">OJOS</p>
+                  </div>
+
+                  <div>
+                    <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                    <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+                  </div>
+
+                </button>
+
+                <ul class="sidebar-submenu-category-list" data-accordion>
+
+                  <li class="sidebar-submenu-category">
+                    <a href="#" class="sidebar-submenu-title" onclick="navigateToCategory('Ojos')">
+                      <p class="product-name">Sombras</p>
+
+                    </a>
+                  </li>
+
+                  <li class="sidebar-submenu-category">
+                    <a href="#" class="sidebar-submenu-title" onclick="navigateToCategory('Ojos')">
+                      <p class="product-name">Delineadores</p>
+
+                    </a>
+                  </li>
+
+                  <li class="sidebar-submenu-category">
+                    <a href="#" class="sidebar-submenu-title" onclick="navigateToCategory('Ojos')">
+                      <p class="product-name">Iluminadores</p>
+
+                    </a>
+                  </li>
+
+
+                  <li class="sidebar-submenu-category">
+                    <a href="#" class="sidebar-submenu-title" onclick="navigateToCategory('Ojos')">
+                      <p class="product-name">Lápices y Plumones</p>
+
+                    </a>
+                  </li>
+
+                </ul>
+
+              </li>
+
+              <li class="sidebar-menu-category">
+
+                <button class="sidebar-accordion-menu" data-accordion-btn>
+
+                  <div class="menu-title-flex">
+                    <img src="./assets/images/iconos/LABIOS.png" alt="perfume" class="menu-title-img" width="20"
+                      height="20">
+
+                    <p class="menu-title" onclick="navigateToCategory('Labios')">LABIOS</p>
+                  </div>
+
+                  <div>
+                    <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                    <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+                  </div>
+
+                </button>
+
+                <ul class="sidebar-submenu-category-list" data-accordion>
+
+                  <li class="sidebar-submenu-category">
+                    <a href="#" class="sidebar-submenu-title" onclick="navigateToCategory('Labios')">
+                      <p class="product-name">Labiales</p>
+
+                    </a>
+                  </li>
+
+                  <li class="sidebar-submenu-category">
+                    <a href="#" class="sidebar-submenu-title" onclick="navigateToCategory('Labios')">
+                      <p class="product-name">Tintas</p>
+
+                    </a>
+                  </li>
+
+                  <li class="sidebar-submenu-category">
+                    <a href="#" class="sidebar-submenu-title" onclick="navigateToCategory('Labios')">
+                      <p class="product-name">Humectantes</p>
+
+                    </a>
+                  </li>
+
+                  <li class="sidebar-submenu-category">
+                    <a href="#" class="sidebar-submenu-title" onclick="navigateToCategory('Labios')">
+                      <p class="product-name">Brillos</p>
+
+                    </a>
+                  </li>
+
+
+
+                </ul>
+
+              </li>
+
+              <li class="sidebar-menu-category">
+
+                <button class="sidebar-accordion-menu" data-accordion-btn>
+
+                  <div class="menu-title-flex">
+                    <img src="./assets/images/iconos/PIEL.png" alt="cosmetics" class="menu-title-img" width="20"
+                      height="20">
+
+                    <p class="menu-title" onclick="navigateToCategory('Facial')">CUIDADO PIEL</p>
+                  </div>
+
+                  <div>
+                    <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                    <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+                  </div>
+
+                </button>
+
+                <ul class="sidebar-submenu-category-list" data-accordion>
+
+                  <li class="sidebar-submenu-category">
+                    <a href="#" class="sidebar-submenu-title" onclick="navigateToCategory('Facial')">
+                      <p class="product-name">Mascarillas</p>
+
+                    </a>
+                  </li>
+
+                  <li class="sidebar-submenu-category">
+                    <a href="#" class="sidebar-submenu-title" onclick="navigateToCategory('Facial')">
+                      <p class="product-name">Jabón Facial</p>
+
+                    </a>
+                  </li>
+
+                  <li class="sidebar-submenu-category">
+                    <a href="#" class="sidebar-submenu-title" onclick="navigateToCategory('Facial')">
+                      <p class="product-name">Cremas y Tratamientos</p>
+
+                    </a>
+                  </li>
+
+                  <li class="sidebar-submenu-category">
+                    <a href="#" class="sidebar-submenu-title" onclick="navigateToCategory('Facial')">
+                      <p class="product-name">Tónicos</p>
+
+                    </a>
+                  </li>
+
+                </ul>
+
+              </li>
+
+              <li class="sidebar-menu-category">
+
+                <button class="sidebar-accordion-menu" data-accordion-btn>
+
+                  <div class="menu-title-flex">
+                    <img src="./assets/images/iconos/CORPORAL.png" alt="glasses" class="menu-title-img" width="20"
+                      height="20">
+
+                    <p class="menu-title" onclick="navigateToCategory('Facial')">CORPORAL</p>
+                  </div>
+
+                  <div>
+                    <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                    <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+                  </div>
+
+                </button>
+
+                <ul class="sidebar-submenu-category-list" data-accordion>
+
+                  <li class="sidebar-submenu-category">
+                    <a href="#" class="sidebar-submenu-title" onclick="navigateToCategory('Facial')">
+                      <p class="product-name">Bloqueadores</p>
+
+                    </a>
+                  </li>
+
+                  <li class="sidebar-submenu-category">
+                    <a href="#" class="sidebar-submenu-title" onclick="navigateToCategory('Facial')">
+                      <p class="product-name">Kit Corporal</p>
+
+                    </a>
+                  </li>
+
+                </ul>
+
+              </li>
+
+              <li class="sidebar-menu-category">
+
+                <button class="sidebar-accordion-menu" data-accordion-btn>
+
+                  <div class="menu-title-flex">
+                    <img src="./assets/images/iconos/UÑAS.png" alt="glasses" class="menu-title-img" width="20"
+                      height="20">
+
+                    <p class="menu-title">UÑAS</p>
+                  </div>
+
+                  <div>
+                    <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                    <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+                  </div>
+
+                </button>
+
+                <ul class="sidebar-submenu-category-list" data-accordion>
+
+                  <li class="sidebar-submenu-category">
+                    <a href="#" class="sidebar-submenu-title">
+                      <p class="product-name">Esmaltes</p>
+                      <data value="5" class="stock" title="Available Stock">5</data>
+                    </a>
+                  </li>
+
+                  <li class="sidebar-submenu-category">
+                    <a href="#" class="sidebar-submenu-title">
+                      <p class="product-name">Uñas Press On</p>
+                      <data value="8" class="stock" title="Available Stock">8</data>
+                    </a>
+                  </li>
+
+                </ul>
+
+              </li>
+
+
+
+            </ul>
+
+          </div>
+
+          <div class="product-showcase">
+
+            <h3 class="showcase-heading">Recomendados</h3>
+
+            <div class="showcase-wrapper">
+
+              <div class="showcase-container">
+
+                <div class="showcase">
+
+                  <a href="#" class="showcase-img-box">
+                    <img src="assets/images/products/SACHET-PROTECTOR-SOLAR-TRENDY.jpg" alt="baby fabric shoes"
+                      width="75" height="75" class="showcase-img">
+                  </a>
+
+                  <div class="showcase-content">
+
+                    <a href="#">
+                      <h4 class="showcase-title">Protector Solar Sachet</h4>
+                    </a>
+                    <div class="price-box">
+                      <p class="price">$20.000</p>
+                      <button class="add-cart-btn" onclick="addToCart(products[20])"><ion-icon name="cart-outline"
+                          aria-hidden="true" aria-live="polite" class="iconcart"></ion-icon></button>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+                <div class="showcase">
+
+                  <a href="#" class="showcase-img-box">
+                    <img src="./img/Kit_Brochas_Coral.png" alt="men's hoodies t-shirt" class="showcase-img" width="75"
+                      height="75">
+                  </a>
+
+                  <div class="showcase-content">
+
+                    <a href="#">
+                      <h4 class="showcase-title">Kit Brochas Coral</h4>
+                    </a>
+                    <div class="price-box">
+                      <p class="price">$45.000</p>
+                      <button class="add-cart-btn" onclick="addToCart(products[0])"><ion-icon name="cart-outline"
+                          aria-hidden="true" aria-live="polite" class="iconcart"></ion-icon></button>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div class="showcase">
+
+                  <a href="#" class="showcase-img-box">
+                    <img src="./img/Protector_Solar.png" alt="girls t-shirt" class="showcase-img" width="75"
+                      height="75">
+                  </a>
+
+                  <div class="showcase-content">
+
+                    <a href="#">
+                      <h4 class="showcase-title">Protector Solar Hombre</h4>
+                    </a>
+                    <div class="price-box">
+                      <p class="price">$20.000</p>
+                      <button class="add-cart-btn" onclick="addToCart(products[10])"><ion-icon name="cart-outline"
+                          aria-hidden="true" aria-live="polite" class="iconcart"></ion-icon></button>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div class="showcase">
+
+                  <a href="#" class="showcase-img-box">
+                    <img src="assets/images/products/Espejo-Gatico-Trendy-Ref-EM50-2-1.jpg" alt="woolen hat for men"
+                      class="showcase-img" width="75" height="75">
+                  </a>
+
+                  <div class="showcase-content">
+
+                    <a href="#">
+                      <h4 class="showcase-title">Espejo Gatito Trendy</h4>
+                    </a>
+                    <div class="price-box">
+                      <p class="price">$18.000</p>
+                      <button class="add-cart-btn" onclick="addToCart(products[29])"><ion-icon name="cart-outline"
+                          aria-hidden="true" aria-live="polite" class="iconcart"></ion-icon></button>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+
+        <div class="product-box">
+
+          <!--
+            - PRODUCT MINIMAL
+          -->
+
+          <!--
+            - PRODUCT FEATURED
+          -->
+
+
+
+
+
+
+
+
+
+
+          <!--
+            - PRODUCT GRID
+          -->
+
+          <div class="product-main">
+
+
+            <h2 class="title">CARRITO DE COMPRAS</h2>
+            <section class="sectiond" id="order-details">
+              <!-- Detalles del pedido -->
+              <h2>Detalles del Pedido</h2>
+
+
+              <div id="product-list" class="product-list">
+                <!-- Lista de productos en el carrito -->
+              </div>
+              <form id="customer-info-form">
+                <!-- Formulario para información del cliente -->
+              </form>
+              <div>
+                <div id="order-summary" class="order-summary">
+                  <!-- Resumen del pedido -->
+                </div>
+                <div id="checkout-btn-container">
+                  <!-- Botón para confirmar el pedido -->
+                </div>
+            </section>
+
+
+
+            <h2 class="title" id="pd">PRODUCTOS DESTACADOS</h2>
+
+            <section class="items">
+
+              <article class="item" tabindex="0">
+                <figure class="name">
+                  <img
+                    src="https://visualgraphicmd.com.co/pages/programacion/cosmic-glow-shop/assets/images/products/protector-solar.jpg"
+                    alt="a cute kitten">
+                  <figcaption>Protector Solar Skincare</figcaption>
+                </figure>
+                <div class="desc">
+
+                  <div class="showcase-content">
+
+
+
+                    <a>
+                      <h3 class="showcase-title">Protector Solar para Hombre Trendy Skincare</h3>
+                    </a>
+
+                    <p class="showcase-desc">
+                      ¡Protege tu piel con un Protector Solar diseñado exclusivamente para hombres!
+                      Factor de protección solar del 50+.
+                    </p>
+
+                    <div class="price-boxx">
+                      <p class="price">$25.000</p>
+
+                      <del>$30.000</del>
+                    </div>
+                    <div class="price-boxx">
+                      <button class="add-cart-btn" onclick="addToCart(products[10])">Agregar al Carrito</button>
+                      <button class="add-cart-btn" onclick="navigateToProductDetail(11);">Ver Detalles</button>
+                    </div>
+
+
+
+
+                  </div>
+                </div>
+              </article>
+              <article class="item" tabindex="0">
+                <figure class="name">
+                  <img
+                    src="https://visualgraphicmd.com.co/pages/programacion/cosmic-glow-shop/assets/images/products/sombras-color-studio.jpg"
+                    alt="a cute kitten">
+                  <figcaption>Sombras Color Studio</figcaption>
+                </figure>
+                <div class="desc">
+                  <button class="close-btn"></button>
+                  <div class="showcase-content">
+
+
+                    <a>
+                      <h3 class="showcase-title">Sombra Color Studio Beauty Glazed</h3>
+                    </a>
+
+                    <p class="showcase-desc">
+                      Paleta de sombras con 35 tonos.
+                      Tonos coloridos.
+                      Acabado mate y satinado.
+                      Calidad profesional.
+                    </p>
+
+                    <div class="price-boxx">
+                      <p class="price">$35.000</p>
+
+                      <del>$55.000</del>
+                    </div>
+
+                    <div class="price-boxx">
+                      <button class="add-cart-btn" onclick="addToCart(products[12])">Agregar al Carrito</button>
+                      <button class="add-cart-btn" onclick="navigateToProductDetail(13);">Ver Detalles</button>
+                    </div>
+
+
+
+
+
+                  </div>
+                </div>
+              </article>
+              <article class="item" tabindex="0">
+                <figure class="name">
+                  <img
+                    src="https://visualgraphicmd.com.co/pages/programacion/cosmic-glow-shop/assets/images/products/kit-brochas-coral.jpg"
+                    alt="a cute kitten">
+                  <figcaption>Kit Brochas Coral</figcaption>
+                </figure>
+                <div class="desc">
+                  <button class="close-btn"></button>
+                  <div class="showcase-content">
+
+
+                    <a>
+                      <h3 class="showcase-title">Kit Brochas Coral</h3>
+                    </a>
+
+                    <p class="showcase-desc">
+                      ¡Este kit es un superbásico para tu maquillaje diario!
+                      Crea looks de ojos con este kit.
+                      Incluye 1 difuminadora, 1 angular y 1 plana.
+
+                    </p>
+
+                    <div class="price-boxx">
+                      <p class="price">$40.000</p>
+
+                      <del>$45.000</del>
+                    </div>
+
+                    <div class="price-boxx">
+                      <button class="add-cart-btn" onclick="addToCart(products[0])">Agregar al Carrito</button>
+                      <button class="add-cart-btn" onclick="navigateToProductDetail(1);">Ver Detalles</button>
+                    </div>
+
+
+
+
+
+                  </div>
+                </div>
+              </article>
+            </section>
+
+
+          </div>
+
+
+          <!--
+      - TESTIMONIALS, CTA & SERVICE
+    -->
+
+
+
+
+
+
+
+          <!--
+      - BLOG
+    -->
+
+          <section class="blog" id="blog">
+
+            <div class="container">
+
+              <div class="blog-container has-scrollbar">
+
+                <div class="blog-card">
+
+                  <a href="/pages/programacion/cosmic-glow-shop/index.html">
+                    <img src="./assets/images/blog-1.jpg" alt="Clothes Retail KPIs 2021 Guide for Clothes Executives"
+                      width="300" class="blog-banner">
+                  </a>
+
+                  <div class="blog-content">
+
+                    <a href="/pages/programacion/cosmic-glow-shop/index.html" class="blog-category">Promociones
+                      2024</a>
+
+                    <a href="/pages/programacion/cosmic-glow-shop/index.html">
+                      <h3 class="blog-title">Celebra la Navidad con descuentos exclusivos.</h3>
+                    </a>
+
+                    <p class="blog-meta">
+                      <cite>¡Encuentra ofertas especiales para regalos festivos imperdibles!</cite>
+                    </p>
+
+                  </div>
+
+                </div>
+
+                <div class="blog-card">
+
+                  <a href="https://maquillajetrendyshop.com/">
+                    <img src="./assets/images/blog-2.jpg" alt="Curbside fashion Trends: How to Win the Pickup Battle."
+                      class="blog-banner" width="300">
+                  </a>
+
+                  <div class="blog-content">
+
+                    <a href="https://maquillajetrendyshop.com/" class="blog-category">Distribuidores Trendy</a>
+
+                    <h3>
+                      <a href="https://maquillajetrendyshop.com/" class="blog-title">Somos el lugar oficial para
+                        descubrir las
+                        últimas tendencias.</a>
+                    </h3>
+
+                    <p class="blog-meta">
+                      <cite>¡Encuentra tu estilo con nosotros ahora!</cite>
+                    </p>
+
+                  </div>
+
+                </div>
+
+                <div class="blog-card">
+
+                  <a href="https://visualgraphicmd.com.co/cosmic-glow/index.html">
+                    <img src="./assets/images/blog-3.jpg" alt="EBT vendors: Claim Your Share of SNAP Online Revenue."
+                      class="blog-banner" width="300">
+                  </a>
+
+                  <div class="blog-content">
+
+                    <a href="https://visualgraphicmd.com.co/cosmic-glow/index.html" class="blog-category">Estilo y
+                      Belleza</a>
+
+                    <h3>
+                      <a href="https://visualgraphicmd.com.co/cosmic-glow/index.html" class="blog-title">Descubre el
+                        arte del
+                        maquillaje con nuestra marca.</a>
+                    </h3>
+                    <p class="blog-meta">
+                      <cite>¡ Explora colores vibrantes y productos de calidad hoy mismo.!</cite>
+                    </p>
+
+                  </div>
+
+                </div>
+
+                <div class="blog-card">
+
+                  <a href="https://visualgraphicmd.com.co/tienda-ropa/index.html">
+                    <img src="./assets/images/blog-4.jpg" alt="Curbside fashion Trends: How to Win the Pickup Battle."
+                      class="blog-banner" width="300">
+                  </a>
+
+                  <div class="blog-content">
+
+                    <a href="https://visualgraphicmd.com.co/tienda-ropa/index.html" class="blog-category">HEMP SHOP</a>
+
+                    <h3>
+                      <a href="https://visualgraphicmd.com.co/tienda-ropa/index.html" class="blog-title">Explora el
+                        mundo
+                        mágico de los juguetes favoritos.</a>
+                    </h3>
+                    <p class="blog-meta">
+                      <cite>¡Únete a la diversión en nuestra tienda Hemp Shop!</cite>
+                    </p>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </section>
+
+
+  </main>
+
+
+  <section class="container" id="productos">
+
+
+
+    <div class="modal-overlay" id="modal-overlay"></div>
+    <div class="modal-container" id="modal-container"></div>
+
+  </section>
+
+
+  <!--
+    - FOOTER
+  -->
+
+  <footer id="footer">
+
+
+
+    <div class="footer-nav">
+      <div class="container">
+
+        <ul class="footer-nav-list">
+
+          <li class="footer-nav-item">
+            <h2 class="nav-title">Medios de Pago</h2>
+            <div class="payment-d"><img src="assets/images/medios_pago.jpg" alt="Modos de Pago" class="payment-img"></div>
+
+          </li>
+
+
+        </ul>
+
+
+
+        <ul class="footer-nav-list">
+
+          <li class="footer-nav-item">
+            <h2 class="nav-title">productos</h2>
+          </li>
+
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Accesorios</a>
+          </li>
+
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Labios</a>
+          </li>
+
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Ojos</a>
+          </li>
+
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Brochas</a>
+          </li>
+
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Corporal</a>
+          </li>
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Uñas</a>
+          </li>
+        </ul>
+
+
+
+        <ul class="footer-nav-list">
+
+          <li class="footer-nav-item">
+            <h2 class="nav-title">Politicas</h2>
+          </li>
+
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Domicilios</a>
+          </li>
+
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Proteccion Datos</a>
+          </li>
+
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Terminos y condiciones</a>
+          </li>
+
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Nosotros</a>
+          </li>
+
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Pago seguro</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-nav-list">
+
+          <li class="footer-nav-item">
+            <h2 class="nav-title">Servicios</h2>
+          </li>
+
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Ofertas</a>
+          </li>
+
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Nuevos</a>
+          </li>
+
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">mejores productos</a>
+          </li>
+
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Contactanos</a>
+          </li>
+
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Mapa de la Pagina</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-nav-list">
+
+          <li class="footer-nav-item">
+            <h2 class="nav-title">Contactanos</h2>
+          </li>
+
+          <li class="footer-nav-item flex">
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+
+            <address class="content">
+
+              Bogotá Colombia
+            </address>
+          </li>
+
+          <li class="footer-nav-item flex">
+            <div class="icon-box">
+              <ion-icon name="call-outline"></ion-icon>
+            </div>
+
+            <a href="tel:+573214076057" class="footer-nav-link">(+57) 3214076057</a>
+          </li>
+
+          <li class="footer-nav-item flex">
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+
+            <a href="mailto:example@gmail.com" class="footer-nav-link">COSMICGLOWSHOP@GMAIL.COM</a>
+          </li>
+
+        </ul>
+
+
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+      <div class="container">
+
+
+        <p class="copyright">
+          Copyright &copy; <a href="https://visualgraphicmd.com.co/">Visual GraphicMd</a> all rights reserved.
+        </p>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+  <script>
+    // Seleccionar todas las imágenes en la página
+    const imagenes = document.querySelectorAll('img');
+
+    // Iterar sobre cada imagen y agregar el atributo draggable="false"
+    imagenes.forEach(function (imagen) {
+      imagen.setAttribute('draggable', 'false');
+    });
+
+    // Deshabilitar el menú contextual en todas las imágenes
+    document.addEventListener('contextmenu', function (event) {
+      if (event.target.tagName === 'IMG') {
+        event.preventDefault();
+      }
+    });
+  </script>
+
+  <script src="./assets/js/products.js"></script>
+
+
+
+  <script src="./assets/js/cart.js"></script>
+
+  <script src="./assets/js/carro.js"></script>
+
+  <script src="./assets/js/script.js"></script>
+
+  <!--
+    - custom js link
+  -->
+
+
+
+  <!--
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
